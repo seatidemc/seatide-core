@@ -11,10 +11,14 @@ Automatically delete the ECS instance if there keeps being no online players for
 ```yml
 backupScript: ~
 maxEmptyTime: ~
+adminUsername: ~
+adminPassword: ~
 ```
 
 - (***string***, *optional*) `backupScript` — (Use absolute path) Path to the backup script. Skip if not set.
 - (***int***, *required*) `maxEmptyTime` — (In seconds) The maximum time allowed to have no players online.
+- (***string***, *required*) `adminUsername` — The administrator's username for backend api.
+- (***string***, *required*) `adminPassword` — The administrator's password for backend api.
 
 ## License
 

@@ -23,9 +23,11 @@ public final class Main extends JavaPlugin {
     public void initAutoDeletion(FileConfiguration cfg) {
         var maxEmpty = cfg.getInt("maxEmptyTime");
         var site = cfg.getString("site");
+        var adminUsername = cfg.getString("adminUsername");
+        var adminPassword = cfg.getString("adminPassword");
         if (maxEmpty > 10 || site.equals(null)) {
             var backupScript = cfg.getString("backupScript");
-            var del = new AutoDeletion(maxEmpty, backupScript, site);
+            var del = new AutoDeletion(maxEmpty, backupScript, site, adminUsername, adminPassword);
             del.run(this);
             LogUtil.success("自动停服机制已部署");
         } else {

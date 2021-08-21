@@ -19,9 +19,9 @@ public final class Requests {
     public static String site;
     public static String token = null;
 
-    public Requests(String sitex) {
+    public Requests(String sitex, String adminUsername, String adminPassword) {
         site = sitex;
-        getAdminToken();
+        getAdminToken(adminUsername, adminPassword);
     }
 
     private static CloseableHttpAsyncClient client() {
@@ -73,12 +73,12 @@ public final class Requests {
         }
     }
 
-    public void getAdminToken() {
+    public void getAdminToken(String adminUsername, String adminPassword) {
         var client = client();
         client.start();
         var data = new JSONObject();
-        data.put("username", "Subilan");
-        data.put("password", "subilan1999");
+        data.put("username", adminUsername);
+        data.put("password", adminPassword);
         data.put("type", "auth");
         try {
             var post = new HttpPost(site + "/api/user/v1/auth");

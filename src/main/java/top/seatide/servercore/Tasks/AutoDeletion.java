@@ -14,9 +14,9 @@ public class AutoDeletion {
     public BukkitScheduler sche;
     public Runnable task;
 
-    public AutoDeletion(int maxEmpty, String backupScript, String site) {
+    public AutoDeletion(int maxEmpty, String backupScript, String site, String adminUsername, String adminPassword) {
         sche = Bukkit.getServer().getScheduler();
-        var r = new Requests(site);
+        var r = new Requests(site, adminUsername, adminPassword);
         task = new Runnable(){
             @Override
             public void run() {
