@@ -1,5 +1,6 @@
 package top.seatide.servercore;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import top.seatide.servercore.Tasks.AutoDeletion;
@@ -11,6 +12,15 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
         LogUtil.info("SEATiDE ServerCore 已启动");
         var cfg = this.getConfig();
+        this.initAutoDeletion(cfg);
+    }
+
+    @Override
+    public void onDisable() {
+        LogUtil.info("SEATiDE ServerCore 已停用");
+    }
+
+    public void initAutoDeletion(FileConfiguration cfg) {
         var maxEmpty = cfg.getInt("maxEmptyTime");
         var site = cfg.getString("site");
         if (maxEmpty > 10 || site.equals(null)) {
@@ -21,10 +31,5 @@ public final class Main extends JavaPlugin {
         } else {
             LogUtil.error("无法部署自动停服机制，请检查配置文件");
         }
-    }
-
-    @Override
-    public void onDisable() {
-        LogUtil.info("SEATiDE ServerCore 已停用");
     }
 }
