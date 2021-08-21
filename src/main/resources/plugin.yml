@@ -1,0 +1,7 @@
+name: ServerCore
+version: '${version}'
+main: top.seatide.servercore.Main
+api-version: 1.16
+authors: [Subilan]
+description: SEATiDE's Minecraft server-side management.
+website: https://seatide.top
