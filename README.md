@@ -1,12 +1,14 @@
 # sever-core
 
-This is a plugin specially designed for SEATiDE Minecraft Server. Any of our need in the area of Bukkit Plugin will be implemented in this repository or as its subset.
+简体中文 | [English](./README.en.md)
 
-## Implementations
+这是一个用来管理和拓展 SEATiDE 服务器的主插件，今后所有的拓展将在此插件中进行，或者作为此插件的子集进行。
 
-### ECS Auto Deletion
+## 当前已完成的实现
 
-Automatically delete the ECS instance if there keeps being no online players for ***X*** seconds.
+### 自动释放 ECS
+
+当服务器空闲达到指定的时间以后，备份并释放当前的抢占式实例。
 
 ```yml
 backupScript: ~
@@ -15,10 +17,10 @@ adminUsername: ~
 adminPassword: ~
 ```
 
-- (***string***, *optional*) `backupScript` — (Use absolute path) Path to the backup script. Skip if not set.
-- (***int***, *required*) `maxEmptyTime` — (In seconds) The maximum time allowed to have no players online.
-- (***string***, *required*) `adminUsername` — The administrator's username for backend api.
-- (***string***, *required*) `adminPassword` — The administrator's password for backend api.
+- (***string***, *选填*) `backupScript` — （绝对路径）指向备份脚本的路径。如果不填写就不备份。
+- (***int***, *必填*) `maxEmptyTime` — （单位：秒）允许服务器空闲的最长时间，超过则释放。
+- (***string***, *必填*) `adminUsername` — 后端 API 中的管理员用户名。
+- (***string***, *必填*) `adminPassword` — 后端 API 中的管理员密码。
 
 ## License
 
