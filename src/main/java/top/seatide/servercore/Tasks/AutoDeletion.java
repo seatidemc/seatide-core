@@ -27,7 +27,7 @@ public class AutoDeletion {
                 if (count > 0) {
                     currentEmpty = 0;
                 }
-                if (currentEmpty - maxEmpty < 60) {
+                if (maxEmpty - currentEmpty < 60) {
                     LogUtil.info("实例将在 " + (maxEmpty - currentEmpty)
                             + " 秒后释放。");
                 }
