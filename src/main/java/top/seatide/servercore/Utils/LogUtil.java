@@ -9,10 +9,10 @@ import net.md_5.bungee.api.ChatColor;
 
 public class LogUtil {
     public final static Logger logger = Bukkit.getServer().getLogger();
-    public final static String prefix = "[&eSEAT&bi&eDE&r]";
-    public final static String ERROR = "[&cERROR&r] ";
-    public final static String SUCCESS = "[&aSUCCESS&r] ";
-    public final static String INFO = "[&bINFO&r] ";
+    public final static String prefix = "[" + ChatColor.YELLOW + "SEAT" + ChatColor.AQUA + "i" + ChatColor.YELLOW + "DE" + ChatColor.RESET + "]";
+    public final static String ERROR = "[" + ChatColor.RED + "ERROR" + ChatColor.RESET + "] ";
+    public final static String SUCCESS = "[" + ChatColor.GREEN + "SUCCESS" + ChatColor.RESET + "] ";
+    public final static String INFO = "[" + ChatColor.AQUA + "INFO" + ChatColor.RESET + "] ";
 
     public static String translate(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
