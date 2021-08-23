@@ -9,10 +9,14 @@ import net.md_5.bungee.api.ChatColor;
 
 public class LogUtil {
     public final static Logger logger = Bukkit.getServer().getLogger();
-    public final static String prefix = "[" + ChatColor.YELLOW + "SEAT" + ChatColor.AQUA + "i" + ChatColor.YELLOW + "DE" + ChatColor.RESET + "]";
-    public final static String ERROR = "[" + ChatColor.RED + "ERROR" + ChatColor.RESET + "] ";
-    public final static String SUCCESS = "[" + ChatColor.GREEN + "SUCCESS" + ChatColor.RESET + "] ";
-    public final static String INFO = "[" + ChatColor.AQUA + "INFO" + ChatColor.RESET + "] ";
+    // public final static String prefix = "[" + ChatColor.YELLOW + "SEAT" + ChatColor.AQUA + "i" + ChatColor.YELLOW + "DE" + ChatColor.RESET + "]";
+    // public final static String ERROR = "[" + ChatColor.RED + "ERROR" + ChatColor.RESET + "] ";
+    // public final static String SUCCESS = "[" + ChatColor.GREEN + "SUCCESS" + ChatColor.RESET + "] ";
+    // public final static String INFO = "[" + ChatColor.AQUA + "INFO" + ChatColor.RESET + "] ";
+    public final static String prefix = "[SEATiDE]";
+    public final static String ERROR = "[ERROR] ";
+    public final static String SUCCESS = "[SUCCESS] ";
+    public final static String INFO = "[INFO] ";
 
     public static String translate(String msg) {
         return ChatColor.translateAlternateColorCodes('&', msg);
