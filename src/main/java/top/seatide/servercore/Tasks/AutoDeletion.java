@@ -35,7 +35,7 @@ public class AutoDeletion {
                     if (!backupScript.equals(null)) {
                         LogUtil.info("尝试运行备份脚本...");
                         try {
-                            Process p = Runtime.getRuntime().exec("cmd /c " + backupScript);
+                            Process p = Runtime.getRuntime().exec(backupScript);
                             int i = p.waitFor();
                             if (i == 0) {
                                 LogUtil.success("备份脚本执行成功，返回码 0");
