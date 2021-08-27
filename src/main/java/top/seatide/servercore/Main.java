@@ -1,5 +1,7 @@
 package top.seatide.servercore;
 
+import java.util.Date;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 import top.seatide.servercore.Tasks.AutoDeletion;
@@ -26,6 +28,14 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if (Files.cfg.getBoolean("saveCountdown")) {
+            LogUtil.info("保存计时信息...");
+            Files.countdown.set("last-empty-time", AutoDeletion.currentEmpty);
+            Files.countdown.set("last-max-empty", AutoDeletion.maxEmpty);
+            Files.countdown.set("updated", new Date().getTime());
+            Files.save(Files.countdown, "./countdown.yml");
+            LogUtil.success("保存成功。");
+        }
         LogUtil.info("SEATiDE ServerCore 已停用");
     }
 }

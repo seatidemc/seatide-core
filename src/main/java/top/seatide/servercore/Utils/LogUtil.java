@@ -1,7 +1,6 @@
 package top.seatide.servercore.Utils;
 
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;

@@ -3,3 +3,4 @@ maxEmptyTime: ~
 adminUsername: ~
 adminPassword: ~
 site: ~
+saveCountdown: true

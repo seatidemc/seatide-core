@@ -17,17 +17,23 @@ public class AutoDeletion {
     public Requests r;
 
     public void reload() {
-        maxEmpty = Files.cfg.getInt("maxEmptyTime");
+        if (Files.cfg.getBoolean("saveCountdown")) {
+            maxEmpty = Files.countdown.getInt("last-max-empty");
+            currentEmpty = Files.countdown.getInt("last-empty-time");
+            if (maxEmpty == 0) {
+                maxEmpty = Files.cfg.getInt("maxEmptyTime");
+            }
+        } else {
+            maxEmpty = Files.cfg.getInt("maxEmptyTime");
+        }
         backupScript = Files.cfg.getString("backupScript");
         r = new Requests();
     }
 
     public AutoDeletion() {
-        maxEmpty = Files.cfg.getInt("maxEmptyTime");
-        backupScript = Files.cfg.getString("backupScript");
+        this.reload();
         sche = Bukkit.getServer().getScheduler();
-        r = new Requests();
-        task = new Runnable(){
+        task = new Runnable() {
             @Override
             public void run() {
                 int count = Bukkit.getOnlinePlayers().size();
@@ -38,8 +44,7 @@ public class AutoDeletion {
                     currentEmpty = 0;
                 }
                 if (maxEmpty - currentEmpty < 60) {
-                    LogUtil.info("实例将在 " + (maxEmpty - currentEmpty)
-                            + " 秒后释放。");
+                    LogUtil.info("实例将在 " + (maxEmpty - currentEmpty) + " 秒后释放。");
                 }
                 if (currentEmpty >= maxEmpty) {
                     if (!backupScript.equals(null)) {
