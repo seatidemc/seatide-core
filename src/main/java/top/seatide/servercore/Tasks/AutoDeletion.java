@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import top.seatide.servercore.Main;
+import top.seatide.servercore.Utils.Files;
 import top.seatide.servercore.Utils.LogUtil;
 import top.seatide.servercore.Utils.Requests;
 
@@ -13,10 +14,19 @@ public class AutoDeletion {
     public static int currentEmpty = 0;
     public BukkitScheduler sche;
     public Runnable task;
+    public Requests r;
 
-    public AutoDeletion(int maxEmpty, String backupScript, String site, String adminUsername, String adminPassword) {
+    public void reload() {
+        maxEmpty = Files.cfg.getInt("maxEmptyTime");
+        backupScript = Files.cfg.getString("backupScript");
+        r = new Requests();
+    }
+
+    public AutoDeletion() {
+        maxEmpty = Files.cfg.getInt("maxEmptyTime");
+        backupScript = Files.cfg.getString("backupScript");
         sche = Bukkit.getServer().getScheduler();
-        var r = new Requests(site, adminUsername, adminPassword);
+        r = new Requests();
         task = new Runnable(){
             @Override
             public void run() {
@@ -58,6 +68,10 @@ public class AutoDeletion {
                 }
             }
         };
+    }
+
+    public boolean ready() {
+        return maxEmpty > 10 && Requests.site != null;
     }
 
     public void run(Main plugin) {

@@ -19,8 +19,14 @@ public final class Requests {
     public static String site;
     public static String token = null;
 
-    public Requests(String sitex, String adminUsername, String adminPassword) {
-        site = sitex;
+    public Requests() {
+        this.reload();
+    }
+
+    public void reload() {
+        site = Files.cfg.getString("site");
+        var adminUsername = Files.cfg.getString("adminUsername");
+        var adminPassword = Files.cfg.getString("adminPassword");
         getAdminToken(adminUsername, adminPassword);
     }
 
