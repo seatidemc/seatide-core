@@ -2,6 +2,8 @@
 
 [简体中文](./README.md) | English
 
+[Download latest build](https://nightly.link/seatidemc/server-core/workflows/gradle/master/ServerCore%20latest.zip)
+
 This is a plugin specially designed for SEATiDE Minecraft Server. Any of our need in the area of Bukkit Plugin will be implemented in this repository or as its subset.
 
 ## Implementations
