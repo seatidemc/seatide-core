@@ -15,12 +15,14 @@ backupScript: ~
 maxEmptyTime: ~
 adminUsername: ~
 adminPassword: ~
+saveCountdown: true
 ```
 
 - (***string***, *optional*) `backupScript` — (Use absolute path) Path to the backup script. Skip if not set.
 - (***int***, *required*) `maxEmptyTime` — (In seconds) The maximum time allowed to have no players online.
 - (***string***, *required*) `adminUsername` — The administrator's username for backend api.
 - (***string***, *required*) `adminPassword` — The administrator's password for backend api.
+- (***boolean***, *optional, `true` if not filled*) `saveCountdown` — Determine whether to save countdown data when the plugin is disabled (due to catching a exception or server shutting down). If set to `false`, the countdown will begin by `0` at every restart.
 
 ## License
 
