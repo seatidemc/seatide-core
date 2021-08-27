@@ -18,7 +18,7 @@ adminPassword: ~
 saveCountdown: true
 ```
 
-- (***string***, *选填*) `backupScript` — （绝对路径）指向备份脚本的路径。如果不填写就不备份。
+- (***string***, *选填*) `backupScript` — （绝对路径）指向备份脚本的路径，也可以是单行指令内容。如果不填写就不备份。
 - (***int***, *必填*) `maxEmptyTime` — （单位：秒）允许服务器空闲的最长时间，超过则释放。
 - (***string***, *必填*) `adminUsername` — 后端 API 中的管理员用户名。
 - (***string***, *必填*) `adminPassword` — 后端 API 中的管理员密码。
