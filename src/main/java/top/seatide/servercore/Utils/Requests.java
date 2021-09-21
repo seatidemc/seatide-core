@@ -58,7 +58,7 @@ public final class Requests {
             client.execute(post, new FutureCallback<HttpResponse>() {
                 @Override
                 public void completed(final HttpResponse re) {
-                    var h = new Handle(re);
+                    var h = new Handle(re, "ecs-action-delete");
                     if (!h.isOK()) {
                         LogUtil.error("无法删除当前实例：" + h.getBadMessage());
                     }
@@ -93,7 +93,7 @@ public final class Requests {
             client.execute(post, new FutureCallback<HttpResponse>() {
                 @Override
                 public void completed(final HttpResponse re) {
-                    var h = new Handle(re);
+                    var h = new Handle(re, "user-auth");
                     if (h.isOK()) {
                         token = h.getStringData();
                     } else {
@@ -121,14 +121,13 @@ class Handle {
     public static String status = null;
     public static JSONObject resp;
 
-    public Handle(HttpResponse re) {
+    public Handle(HttpResponse re, String label) {
         try {
             resp = Requests.toJSON(re.getEntity());
             LogUtil.info("[RAWJSON]: " + resp.toString());
             status = resp.getString("status");
         } catch (JSONException e) {
-            LogUtil.error("无法获取请求状态信息。");
-            e.printStackTrace();
+            LogUtil.error("无法获取请求状态信息。位置：" + label);
         } catch (Exception e) {
             LogUtil.error("处理请求时发生错误。");
             e.printStackTrace();
