@@ -15,6 +15,7 @@ public class AutoBackup {
     public static int timer = 0;
     public static int period = 0;
     public String backupScript = null;
+    public static int backupState = 0;
 
     public void reload() {
         backupScript = Files.cfg.getString("backupScript");
@@ -28,7 +29,9 @@ public class AutoBackup {
             @Override
             public void run() {
                 if (timer >= period) {
-                    doBackup();
+                    if (backupState == 0) {
+                        doBackup();
+                    }
                     timer = 0;
                 } else {
                     timer += 1;
@@ -38,18 +41,22 @@ public class AutoBackup {
     }
 
     public void doBackup() {
+        backupState = 1;
         LogUtil.info("尝试备份中...");
         try {
             var b = backup();
             int i = b.waitFor();
             if (i == 0) {
                 LogUtil.success("备份成功。");
+                
             } else {
                 LogUtil.error("备份脚本执行失败，返回码 " + i);
             }
+            backupState = 0;
         } catch (Exception e) {
             LogUtil.error("备份脚本执行出现错误。");
             e.printStackTrace();
+            backupState = 0;
         }
     }
 
