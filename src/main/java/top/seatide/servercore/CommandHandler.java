@@ -85,6 +85,11 @@ public class CommandHandler implements TabExecutor {
                     break;
                 }
 
+                case "backup": {
+                    Main.back.doBackup();
+                    break;
+                }
+
                 case "reload": {
                     Files.reload();
                     Main.del.reload();

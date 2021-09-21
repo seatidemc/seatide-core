@@ -24,29 +24,33 @@ public class AutoBackup {
     public AutoBackup() {
         this.reload();
         sche = Bukkit.getServer().getScheduler();
-        task = new Runnable(){
+        task = new Runnable() {
             @Override
             public void run() {
                 if (timer >= period) {
-                    LogUtil.info("尝试备份中...");
-                    try {
-                        var b = backup();
-                        int i = b.waitFor();
-                        if (i == 0) {
-                            LogUtil.success("备份成功。");
-                        } else {
-                            LogUtil.error("备份脚本执行失败，返回码 " + i);
-                        }
-                    } catch (Exception e) {
-                        LogUtil.error("备份脚本执行出现错误。");
-                        e.printStackTrace();
-                    }
+                    doBackup();
                     timer = 0;
                 } else {
                     timer += 1;
                 }
             }
         };
+    }
+
+    public void doBackup() {
+        LogUtil.info("尝试备份中...");
+        try {
+            var b = backup();
+            int i = b.waitFor();
+            if (i == 0) {
+                LogUtil.success("备份成功。");
+            } else {
+                LogUtil.error("备份脚本执行失败，返回码 " + i);
+            }
+        } catch (Exception e) {
+            LogUtil.error("备份脚本执行出现错误。");
+            e.printStackTrace();
+        }
     }
 
     public boolean ready() {
