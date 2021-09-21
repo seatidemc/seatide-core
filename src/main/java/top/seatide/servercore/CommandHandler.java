@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.util.StringUtil;
 
+import top.seatide.servercore.Tasks.AutoBackup;
 import top.seatide.servercore.Tasks.AutoDeletion;
 import top.seatide.servercore.Utils.Files;
 import top.seatide.servercore.Utils.LogUtil;
@@ -70,6 +71,16 @@ public class CommandHandler implements TabExecutor {
                             LogUtil.send(sender, "实例将在 " + delTime + " 秒后（约 &e" + formatted + "&r）释放。");
                             break;
                         }
+
+                        case "backuptime": {
+                            var backupTime = AutoBackup.period - AutoBackup.timer;
+                            var cal = Calendar.getInstance();
+                            cal.setTime(new Date());
+                            cal.add(Calendar.SECOND, backupTime);
+                            var formatted = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+                            LogUtil.send(sender, "下一次备份在 " + backupTime + " 秒后（约 &e" + formatted + "&r）执行。");
+                            break;
+                        }
                     }
                     break;
                 }
@@ -77,6 +88,7 @@ public class CommandHandler implements TabExecutor {
                 case "reload": {
                     Files.reload();
                     Main.del.reload();
+                    Main.back.reload();
                     LogUtil.send(sender, "配置文件重载成功", LogUtil.richSUCCESS);
                     break;
                 }

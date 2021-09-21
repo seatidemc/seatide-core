@@ -20,7 +20,9 @@ adminPassword: ~
 saveCountdown: true
 ```
 
+- (***string***, *optional*) `archiveScript` — (Use absolute path) Path to the archive script which will be executed before the instance is deleted. Skip if not set.
 - (***string***, *optional*) `backupScript` — (Use absolute path) Path to the backup script. Skip if not set.
+- (***int***, *optional*) `backupPeriod` — (In seconds) The period time of backup. Should not be less than 10.
 - (***int***, *required*) `maxEmptyTime` — (In seconds) The maximum time allowed to have no players online.
 - (***string***, *required*) `adminUsername` — The administrator's username for backend api.
 - (***string***, *required*) `adminPassword` — The administrator's password for backend api.

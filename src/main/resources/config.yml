@@ -1,5 +1,7 @@
 backupScript: ~
+archiveScript: ~
 maxEmptyTime: ~
+backupPeriod: ~
 adminUsername: ~
 adminPassword: ~
 site: ~

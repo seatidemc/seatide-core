@@ -10,7 +10,7 @@ import top.seatide.servercore.Utils.Requests;
 
 public class AutoDeletion {
     public static int maxEmpty = 9999999;
-    public static String backupScript = "";
+    public static String archiveScript = "";
     public static int currentEmpty = 0;
     public BukkitScheduler sche;
     public Runnable task;
@@ -26,7 +26,7 @@ public class AutoDeletion {
         } else {
             maxEmpty = Files.cfg.getInt("maxEmptyTime");
         }
-        backupScript = Files.cfg.getString("backupScript");
+        archiveScript = Files.cfg.getString("archiveScript");
         r = new Requests();
     }
 
@@ -47,28 +47,29 @@ public class AutoDeletion {
                     LogUtil.info("实例将在 " + (maxEmpty - currentEmpty) + " 秒后释放。");
                 }
                 if (currentEmpty >= maxEmpty) {
-                    if (!backupScript.equals(null)) {
-                        LogUtil.info("尝试运行备份脚本...");
+                    if (!archiveScript.equals(null)) {
+                        LogUtil.info("尝试运行归档脚本...");
                         try {
-                            Process p = Runtime.getRuntime().exec(backupScript);
+                            Process p = new ProcessBuilder(archiveScript).start();
                             int i = p.waitFor();
                             if (i == 0) {
-                                LogUtil.success("备份脚本执行成功，返回码 0");
+                                LogUtil.success("归档脚本执行成功，返回码 0");
+                                r.deleteInstance();
                             } else {
-                                LogUtil.error("备份脚本执行失败，返回码 " + i);
+                                LogUtil.error("归档脚本执行失败，返回码 " + i);
                                 currentEmpty = 0;
                                 return;
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            LogUtil.error("无法运行备份脚本。");
-                            currentEmpty = 0;
+                            LogUtil.error("无法运行归档脚本，1 分钟后再试。");
+                            currentEmpty = maxEmpty - 60;
                             return;
                         }
                     } else {
-                        LogUtil.info("未检测到备份脚本。");
+                        LogUtil.info("未检测到归档脚本，直接释放。");
+                        r.deleteInstance();
                     }
-                    r.deleteInstance();
                     currentEmpty = 0;
                 }
             }
