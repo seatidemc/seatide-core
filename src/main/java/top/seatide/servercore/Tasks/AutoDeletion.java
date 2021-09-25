@@ -15,6 +15,7 @@ public class AutoDeletion {
     public BukkitScheduler sche;
     public Runnable task;
     public Requests r;
+    public static boolean locked = false;
 
     public void reload() {
         if (Files.cfg.getBoolean("saveCountdown")) {
@@ -36,6 +37,9 @@ public class AutoDeletion {
         task = new Runnable() {
             @Override
             public void run() {
+                if (locked) {
+                    return;
+                }
                 int count = Bukkit.getOnlinePlayers().size();
                 if (count == 0) {
                     currentEmpty += 1;
@@ -51,6 +55,7 @@ public class AutoDeletion {
                         LogUtil.info("尝试运行归档脚本...");
                         try {
                             Process p = new ProcessBuilder(archiveScript).start();
+                            locked = true;
                             int i = p.waitFor();
                             if (i == 0) {
                                 LogUtil.success("归档脚本执行成功，返回码 0");
@@ -58,12 +63,14 @@ public class AutoDeletion {
                             } else {
                                 LogUtil.error("归档脚本执行失败，返回码 " + i);
                                 currentEmpty = 0;
+                                locked = false;
                                 return;
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
                             LogUtil.error("无法运行归档脚本，1 分钟后再试。");
                             currentEmpty = maxEmpty - 60;
+                            locked = false;
                             return;
                         }
                     } else {
