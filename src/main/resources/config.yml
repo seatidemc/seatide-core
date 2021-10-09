@@ -1,7 +1,9 @@
+# API Settings
 api:
   site: ~
   adminUsername: ~
   adminPassword: ~
+# ECS Backup & Deletion Settings
 ecs:
   saveCountdown: false
   backupScript: ~
