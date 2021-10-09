@@ -3,12 +3,10 @@ api:
   adminUsername: ~
   adminPassword: ~
 ecs:
-  saveCountdown: true
+  saveCountdown: false
   backupScript: ~
   archiveScript: ~
   maxEmptyTime: ~
   backupPeriod: ~
 command-costs: ~
-random-tp:
-  default: 1000
-  max: 3000
+random-tp: ~
