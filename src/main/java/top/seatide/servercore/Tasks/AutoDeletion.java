@@ -18,16 +18,16 @@ public class AutoDeletion {
     public static boolean locked = false;
 
     public void reload() {
-        if (Files.cfg.getBoolean("saveCountdown")) {
+        if (Files.cfg.getBoolean("ecs.saveCountdown")) {
             maxEmpty = Files.countdown.getInt("last-max-empty");
             currentEmpty = Files.countdown.getInt("last-empty-time");
             if (maxEmpty == 0) {
-                maxEmpty = Files.cfg.getInt("maxEmptyTime");
+                maxEmpty = Files.cfg.getInt("ecs.maxEmptyTime");
             }
         } else {
-            maxEmpty = Files.cfg.getInt("maxEmptyTime");
+            maxEmpty = Files.cfg.getInt("ecs.maxEmptyTime");
         }
-        archiveScript = Files.cfg.getString("archiveScript");
+        archiveScript = Files.cfg.getString("ecs.archiveScript");
         r = new Requests();
     }
 

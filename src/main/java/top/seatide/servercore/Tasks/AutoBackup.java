@@ -18,8 +18,8 @@ public class AutoBackup {
     public static int backupState = 0;
 
     public void reload() {
-        backupScript = Files.cfg.getString("backupScript");
-        period = Files.cfg.getInt("backupPeriod");
+        backupScript = Files.cfg.getString("ecs.backupScript");
+        period = Files.cfg.getInt("ecs.backupPeriod");
     }
 
     public AutoBackup() {

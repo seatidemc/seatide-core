@@ -8,6 +8,7 @@ import top.seatide.servercore.Tasks.AutoBackup;
 import top.seatide.servercore.Tasks.AutoDeletion;
 import top.seatide.servercore.Utils.Files;
 import top.seatide.servercore.Utils.LogUtil;
+import top.seatide.servercore.Utils.Vault;
 
 public final class Main extends JavaPlugin {
     public static AutoDeletion del;
@@ -19,6 +20,7 @@ public final class Main extends JavaPlugin {
         Files.init(this);
         LogUtil.info("SEATiDE ServerCore 已启动");
         this.getCommand("seatidecore").setExecutor(new CommandHandler());
+        getServer().getPluginManager().registerEvents(new Events(), this);
         del = new AutoDeletion();
         if (del.ready()) {
             del.run(this);
@@ -33,11 +35,16 @@ public final class Main extends JavaPlugin {
         } else {
             LogUtil.error("自动备份机制部署失败，请检查配置文件是否符合要求");
         }
+        if (Vault.setup()) {
+            LogUtil.success("VaultAPI 已部署");
+        } else {
+            LogUtil.error("VaultAPI 部署失败，部分操作将会报错");
+        }
     }
 
     @Override
     public void onDisable() {
-        if (Files.cfg.getBoolean("saveCountdown")) {
+        if (Files.cfg.getBoolean("ecs.saveCountdown")) {
             LogUtil.info("保存计时信息...");
             Files.countdown.set("last-empty-time", AutoDeletion.currentEmpty);
             Files.countdown.set("last-max-empty", AutoDeletion.maxEmpty);

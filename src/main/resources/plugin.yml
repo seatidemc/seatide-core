@@ -5,12 +5,25 @@ api-version: 1.16
 authors: [Subilan]
 description: SEATiDE's Minecraft server-side management.
 website: https://seatide.top
+depend: [Vault]
 commands:
   seatidecore:
-    aliases: ['stcore']
+    aliases: ['st']
     permission: seatidecore.command
     permission-message: "You do not have the permission to use the command."
     usage: The command is invalid or you don't have the permission to use it. 
 permissions:
   seatidecore.admin:
     default: op
+  seatidecore.nocommandcost:
+    default: op
+  seatidecore.command.rt:
+    default: true
+  seatidecore.command.backup:
+    default: op
+  seatidecore.command.get:
+    default: true
+  seatidecore.command.reload:
+    default: op
+  seatidecore.command:
+    default: true

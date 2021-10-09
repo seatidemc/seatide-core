@@ -1,8 +1,14 @@
-backupScript: ~
-archiveScript: ~
-maxEmptyTime: ~
-backupPeriod: ~
-adminUsername: ~
-adminPassword: ~
-site: ~
-saveCountdown: true
+api:
+  site: ~
+  adminUsername: ~
+  adminPassword: ~
+ecs:
+  saveCountdown: true
+  backupScript: ~
+  archiveScript: ~
+  maxEmptyTime: ~
+  backupPeriod: ~
+command-costs: ~
+random-tp:
+  default: 1000
+  max: 3000

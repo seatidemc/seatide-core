@@ -24,9 +24,9 @@ public final class Requests {
     }
 
     public void reload() {
-        site = Files.cfg.getString("site");
-        var adminUsername = Files.cfg.getString("adminUsername");
-        var adminPassword = Files.cfg.getString("adminPassword");
+        site = Files.cfg.getString("api.site");
+        var adminUsername = Files.cfg.getString("api.adminUsername");
+        var adminPassword = Files.cfg.getString("api.adminPassword");
         getAdminToken(adminUsername, adminPassword);
     }
 
