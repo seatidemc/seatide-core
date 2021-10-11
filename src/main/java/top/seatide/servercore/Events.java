@@ -41,6 +41,7 @@ public class Events implements Listener {
                     } else if (r.type == ResponseType.FAILURE) {
                         LogUtil.send(p, "&c收取金额时发生错误: " + r.errorMessage);
                     }
+                    break;
                 }
             }
         }
