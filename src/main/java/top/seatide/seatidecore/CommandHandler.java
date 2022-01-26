@@ -23,7 +23,7 @@ import top.seatide.seatidecore.Utils.Files;
 import top.seatide.seatidecore.Utils.LogUtil;
 
 public class CommandHandler implements TabExecutor {
-    public final static String[] ARGS = { "get", "reload", "backup", "rt" };
+    public final static String[] ARGS = { "get", "reload", "backup", "archive", "rt" };
 
     public List<String> getResult(String arg, List<String> commands, CommandSender sender) {
         List<String> result = new ArrayList<>();
