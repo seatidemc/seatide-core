@@ -10,5 +10,4 @@ ecs:
   archiveScript: ~
   maxEmptyTime: ~
   backupPeriod: ~
-command-costs: ~
 random-tp: ~

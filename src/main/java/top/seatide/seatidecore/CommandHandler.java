@@ -21,7 +21,6 @@ import top.seatide.seatidecore.Tasks.AutoBackup;
 import top.seatide.seatidecore.Tasks.AutoDeletion;
 import top.seatide.seatidecore.Utils.Files;
 import top.seatide.seatidecore.Utils.LogUtil;
-import top.seatide.seatidecore.Utils.Vault;
 
 public class CommandHandler implements TabExecutor {
     public final static String[] ARGS = { "get", "reload", "backup", "rt" };
@@ -122,8 +121,8 @@ public class CommandHandler implements TabExecutor {
                         return true;
                     }
                     var p = (Player) sender;
-                    var range = Files.cfg.getInt("random-tp.default");
-                    var max = Files.cfg.getInt("random-tp.max");
+                    var range = Files.cfg.getInt("random-tp.default-range");
+                    var max = Files.cfg.getInt("random-tp.max-range");
                     if (args.length >= 2) {
                         try {
                             range = Integer.parseInt(args[1]);
@@ -150,7 +149,6 @@ public class CommandHandler implements TabExecutor {
                         LogUtil.send(p, "&a成功随机传送至 &e(" + x + ".0, " + (y + 1) + ".0, " + z + ".0) &a");
                     } else {
                         LogUtil.send(p, "&c传送失败，收取的金额已返还。");
-                        Vault.eco.depositPlayer(p, p.getWorld().getName(), Files.cfg.getInt("command-costs.rt"));
                     }
                     break;
                 }
