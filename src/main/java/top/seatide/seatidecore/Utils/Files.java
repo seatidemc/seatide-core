@@ -1,4 +1,4 @@
-package top.seatide.servercore.Utils;
+package top.seatide.seatidecore.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,8 @@ import java.io.IOException;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import top.seatide.servercore.Main;
+
+import top.seatide.seatidecore.Main;
 
 public final class Files {
     public static String cwd;

@@ -1,13 +1,13 @@
-package top.seatide.servercore.Tasks;
+package top.seatide.seatidecore.Tasks;
 
 import java.io.IOException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import top.seatide.servercore.Main;
-import top.seatide.servercore.Utils.Files;
-import top.seatide.servercore.Utils.LogUtil;
+import top.seatide.seatidecore.Main;
+import top.seatide.seatidecore.Utils.Files;
+import top.seatide.seatidecore.Utils.LogUtil;
 
 public class AutoBackup {
     public BukkitScheduler sche;

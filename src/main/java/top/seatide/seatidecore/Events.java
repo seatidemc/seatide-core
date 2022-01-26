@@ -1,4 +1,4 @@
-package top.seatide.servercore;
+package top.seatide.seatidecore;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.Listener;

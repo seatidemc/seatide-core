@@ -1,14 +1,14 @@
-package top.seatide.servercore;
+package top.seatide.seatidecore;
 
 import java.util.Date;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import top.seatide.servercore.Tasks.AutoBackup;
-import top.seatide.servercore.Tasks.AutoDeletion;
-import top.seatide.servercore.Utils.Files;
-import top.seatide.servercore.Utils.LogUtil;
-import top.seatide.servercore.Utils.Vault;
+import top.seatide.seatidecore.Tasks.AutoBackup;
+import top.seatide.seatidecore.Tasks.AutoDeletion;
+import top.seatide.seatidecore.Utils.Files;
+import top.seatide.seatidecore.Utils.LogUtil;
+import top.seatide.seatidecore.Utils.Vault;
 
 public final class Main extends JavaPlugin {
     public static AutoDeletion del;

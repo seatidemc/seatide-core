@@ -1,12 +1,12 @@
-package top.seatide.servercore.Tasks;
+package top.seatide.seatidecore.Tasks;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import top.seatide.servercore.Main;
-import top.seatide.servercore.Utils.Files;
-import top.seatide.servercore.Utils.LogUtil;
-import top.seatide.servercore.Utils.Requests;
+import top.seatide.seatidecore.Main;
+import top.seatide.seatidecore.Utils.Files;
+import top.seatide.seatidecore.Utils.LogUtil;
+import top.seatide.seatidecore.Utils.Requests;
 
 public class AutoDeletion {
     public static int maxEmpty = 9999999;

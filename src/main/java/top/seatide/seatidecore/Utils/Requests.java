@@ -1,4 +1,4 @@
-package top.seatide.servercore.Utils;
+package top.seatide.seatidecore.Utils;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpEntity;

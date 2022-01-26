@@ -1,4 +1,4 @@
-# server-core
+# seatide-core
 
 [下载最新构建](https://nightly.link/seatidemc/server-core/workflows/gradle/master/ServerCore%20latest.zip)
 

@@ -1,4 +1,4 @@
-package top.seatide.servercore.Utils;
+package top.seatide.seatidecore.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;

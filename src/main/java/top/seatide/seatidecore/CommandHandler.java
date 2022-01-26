@@ -1,4 +1,4 @@
-package top.seatide.servercore;
+package top.seatide.seatidecore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
-import top.seatide.servercore.Tasks.AutoBackup;
-import top.seatide.servercore.Tasks.AutoDeletion;
-import top.seatide.servercore.Utils.Files;
-import top.seatide.servercore.Utils.LogUtil;
-import top.seatide.servercore.Utils.Vault;
+import top.seatide.seatidecore.Tasks.AutoBackup;
+import top.seatide.seatidecore.Tasks.AutoDeletion;
+import top.seatide.seatidecore.Utils.Files;
+import top.seatide.seatidecore.Utils.LogUtil;
+import top.seatide.seatidecore.Utils.Vault;
 
 public class CommandHandler implements TabExecutor {
     public final static String[] ARGS = { "get", "reload", "backup", "rt" };

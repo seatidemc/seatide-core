@@ -1,4 +1,4 @@
-package top.seatide.servercore.Utils;
+package top.seatide.seatidecore.Utils;
 
 import java.util.logging.Logger;
 
