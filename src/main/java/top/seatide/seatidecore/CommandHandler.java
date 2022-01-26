@@ -63,7 +63,7 @@ public class CommandHandler implements TabExecutor {
             }
             if (!sender.hasPermission("seatidecore.admin")) {
                 if (!sender.hasPermission("seatidecore.command." + args[0])) {
-                    LogUtil.send(sender, "你需要 seatidecore." + args[0] + " 权限才能执行此指令", LogUtil.richERROR);
+                    LogUtil.send(sender, "你需要 seatidecore.command." + args[0] + " 权限才能执行此指令", LogUtil.richERROR);
                     return true;
                 }
             }
